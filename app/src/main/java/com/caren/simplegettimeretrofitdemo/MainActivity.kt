@@ -2,6 +2,7 @@ package com.caren.simplegettimeretrofitdemo
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
@@ -35,7 +36,8 @@ class MainActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<TimeResponse>, response: Response<TimeResponse>) {
                 val currentTime = response.body()?.currentDateTime
-                Log.i("Caren", "current time: " + currentTime)
+                findViewById<TextView>(R.id.textView).text = currentTime
+                Log.i("Caren", "retrieved current time: " + currentTime)
             }
 
         })
